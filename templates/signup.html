@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Kayıt Ol</h2>
+<form method="post">
+{% csrf_token %}
+  <label>E-posta {{ form.email }}</label>
+  <label>Şifre {{ form.password }}</label>
+  <label>Tesis Kodu {{ form.facility_code }}</label>
+  <button type="submit">Kayıt Ol</button>
+</form>
+{% endblock %}
+

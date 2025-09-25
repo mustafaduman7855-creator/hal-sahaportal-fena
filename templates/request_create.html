@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Yeni İstek</h2>
+<form method="post">{% csrf_token %}
+  <label>Tarih {{ form.match_date }}</label>
+  <label>Başlangıç {{ form.start_time }}</label>
+  <label>Bitiş {{ form.end_time }}</label>
+  <label>{{ form.consent }} Oyunculardan izin aldım</label>
+  <button type="submit">Gönder</button>
+</form>
+{% endblock %}

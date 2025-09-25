@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Halı Saha Yayın İstek</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+</head>
+<body>
+  <main class="container">
+    <nav>
+      <ul>
+        <li><strong>Halı Saha</strong></li>
+      </ul>
+      <ul>
+        {% if request.user.is_authenticated %}
+        <li>{{ request.user.email }}</li>
+        <li><a href="{% url 'logout' %}">Çıkış</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Giriş</a></li>
+        <li><a href="{% url 'signup' %}">Kayıt</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    {% for message in messages %}
+      <article>{{ message }}</article>
+    {% endfor %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

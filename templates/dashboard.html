@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>İsteklerim</h2>
+<p><a href="{% url 'request_create' %}">Yeni İstek Oluştur</a></p>
+<table>
+  <thead><tr><th>Tarih</th><th>Başlangıç</th><th>Bitiş</th><th>Onay</th></tr></thead>
+  <tbody>
+  {% for r in requests %}
+    <tr>
+      <td>{{ r.match_date }}</td>
+      <td>{{ r.start_time }}</td>
+      <td>{{ r.end_time }}</td>
+      <td>{% if r.consent %}&#x2714;{% else %}&#x2716;{% endif %}</td>
+    </tr>
+  {% empty %}<tr><td colspan="4">Henüz istek yok.</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endblock %}
